@@ -29,5 +29,5 @@ const App = () => {
   );
 };
 // exact is used when we need the same path and not something matching
-// the switch component will help us only match with the first route and nooot with all of them
+// the switch component will help us only match with the first route and not with all of them
 export default App;
