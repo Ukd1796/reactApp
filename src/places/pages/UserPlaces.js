@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 
 import PlaceList from "../components/PlaceList";
 
+
+
 const DUMMY_PLACES = [
   {
     id: "p1",
@@ -19,7 +21,7 @@ const DUMMY_PLACES = [
   },
   {
     id: "p2",
-    title: "Wankhade Stadium",
+    title: "My Stadium",
     description: "International Cricket ground in Mumbai",
     imageUrl:
       "https://th.bing.com/th/id/OIP.LxjGjG2rxM0rddk9zgvU_AHaD4?pid=ImgDet&rs=1",
