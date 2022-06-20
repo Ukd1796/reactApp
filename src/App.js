@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useCallback} from "react";
 import {
   BrowserRouter as Router,
   Redirect,
@@ -9,11 +9,24 @@ import Users from "./user/pages/Users";
 import MainNavigation from "./shared/components/UIElements/Navigation/MainNavigation";
 import UserPlaces from "./places/pages/UserPlaces";
 import UpdatePlace from "./places/pages/UpdatePlace";
+import Auth from "./user/pages/Auth";
+import { AuthContext } from "./shared/context/auth-context";
 
 import NewPlace from "./places/pages/NewPlace";
 
 const App = () => {
+
+  const [isLoggedIn,setIsLoggedIn] = useState(false);
+
+  const login = useCallback(()=>{
+    setIsLoggedIn(true);
+  },[]);
+
+  const logout = useCallback(()=>{
+    setIsLoggedIn(false);
+  },[]);
   return (
+    <AuthContext.Provider value={{isLoggedIn:isLoggedIn,login:login,logout:logout}}>
     <Router>
     <MainNavigation/>
     <main>
@@ -30,10 +43,14 @@ const App = () => {
         <Route path="/places/:placeId" exact>
         <UpdatePlace/>
         </Route>
+        <Route path="/auth" exact>
+          <Auth/>
+        </Route>
         <Redirect to="/" />
       </Switch>
       </main>
     </Router>
+    </AuthContext.Provider>
   );
 };
 // exact is used when we need the same path and not something matching
